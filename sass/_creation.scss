@@ -1,0 +1,60 @@
+.creation {
+  grid-column: center-start / center-end;
+  margin-bottom: 9.6rem;
+  position: relative;
+
+  &__description {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 6.4rem;
+    @media only screen and (max-width: $bp-smallest) {
+      justify-content: center;
+      margin-bottom: 3.2rem;
+    }
+  }
+
+  &__gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(25rem, 1fr));
+    gap: 2rem;
+  }
+
+  &__box {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+
+    @media only screen and (max-width: $bp-smallest) {
+      grid-template-rows: repeat(2, 10rem);
+    }
+  }
+
+  &__image-box {
+    width: 100%;
+    grid-column: 1 / -1;
+    grid-row: 1 / 3;
+  }
+
+  &__img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  &__text {
+    grid-row: 2 / 3;
+    grid-column: 1 / -1;
+    align-self: center;
+    padding: 0 1.6rem;
+    width: 80%;
+  }
+
+  @media only screen and (max-width: $bp-smallest) {
+    &__btn {
+      position: absolute;
+      bottom: -6rem;
+      left: 50%;
+      transform: translateX(-50%);
+    }
+  }
+}

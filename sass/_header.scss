@@ -1,0 +1,137 @@
+.header {
+  grid-column: full-start / full-end;
+  background-image: linear-gradient(
+      rgba($color-black, 0.5),
+      rgba($color-black, 0.5)
+    ),
+    url(../images/desktop/image-hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  color: $color-white;
+  display: grid;
+  grid-template-columns: minmax(6rem, 1fr) repeat(8, 1fr) minmax(6rem, 1fr);
+  grid-template-rows: repeat(6, 1fr);
+  position: relative;
+
+  &__logo {
+    grid-column: 2 / 4;
+    grid-row: 1 / 2;
+    align-self: center;
+    z-index: 1000;
+  }
+
+  &__navigation {
+    grid-column: 6 / 10;
+    grid-row: 1 / 2;
+
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+  }
+
+  &__list {
+    list-style: none;
+
+    display: flex;
+    align-items: center;
+    gap: 3.2rem;
+  }
+
+  &__link:link,
+  &__link:visited {
+    text-decoration: none;
+    color: inherit;
+    font-size: 2rem;
+    padding-bottom: 4px;
+    transition: all 0.3s;
+  }
+
+  &__link:hover,
+  &__link:active {
+    border-bottom: 1px solid $color-white;
+  }
+
+  &__mobile-nav {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: none;
+  }
+
+  &__icon-close {
+    display: none;
+  }
+
+  &__text {
+    font-size: 6.4rem;
+    grid-column: 2 / 6;
+    grid-row: 3 / 6;
+    align-self: center;
+    padding: 3.2rem;
+    border: 2px solid $color-white;
+
+    @media only screen and (max-width: $bp-medium) {
+      font-size: 4.8rem;
+      grid-column: 2 / 8;
+      padding: 2.4rem;
+    }
+
+    @media only screen and (max-width: $bp-small) {
+      grid-column: 2 / 10;
+      font-size: 4rem;
+    }
+  }
+
+  @media only screen and (max-width: $bp-small) {
+    &__mobile-nav {
+      display: block;
+      z-index: 999;
+    }
+
+    //Apply our normal styles before the header is open and hide it
+    &__list {
+      position: absolute;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      z-index: 999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: #000;
+      height: 100vh;
+      transform: translateX(100%);
+      transition: all 0.5s ease-in-out;
+
+      opacity: 0;
+      pointer-events: none;
+      visibility: hidden;
+    }
+
+    &__link:link,
+    &__link:visited {
+      text-transform: uppercase;
+      font-size: 4.8rem;
+      margin-left: 8.5rem;
+    }
+
+    //show the navigation with the new header-open class
+    &.header-open {
+      .header__list {
+        opacity: 1;
+        pointer-events: auto;
+        visibility: visible;
+        transform: translateX(0);
+      }
+
+      .header__icon-close {
+        display: block;
+      }
+
+      .header__icon-menu {
+        display: none;
+      }
+    }
+  }
+}

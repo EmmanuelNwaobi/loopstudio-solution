@@ -1,0 +1,100 @@
+//COLORS
+$color-white: hsl(0, 0%, 100%);
+$color-black: hsl(0, 0%, 0%);
+$color-gray-200: hsl(0, 0%, 85%);
+
+//FONTS
+$alata-font: "Alata", sans-serif;
+$primary-font: "Josefin Sans", sans-serif;
+
+$bp-desktop: 112.5em; //1800px
+$bp-largest: 75em; //1200px
+$bp-medium: 65.75em; //1052px
+$bp-small: 53.4em; //854px
+$bp-smallest: 31.5em; //509px
+
+//BASE STYLES
+*,
+*::before,
+*::after {
+  padding: 0;
+  margin: 0;
+  box-sizing: inherit;
+}
+
+html {
+  box-sizing: border-box;
+  font-size: 62.5%;
+
+  @media only screen and (max-width: $bp-largest) {
+    font-size: 50%;
+  }
+
+  @media only screen and (min-width: $bp-desktop) {
+    font-size: 75%;
+  }
+}
+
+body {
+  font-family: $primary-font;
+  font-weight: 300;
+  line-height: 1.5;
+  font-size: 1.5rem;
+}
+
+//PAGE LAYOUT
+.container {
+  display: grid;
+  grid-template-rows: 90vh min-content repeat(2, min-content);
+  grid-template-columns:
+    [full-start] minmax(6rem, 1fr)
+    [center-start] repeat(8, [col-start] minmax(min-content, 15rem) [col-end])
+    [center-end]
+    minmax(6rem, 1fr) [full-end];
+  overflow: hidden;
+}
+
+.heading-1 {
+  font-weight: 300;
+  letter-spacing: -0.5px;
+  line-height: 1.1;
+  text-transform: uppercase;
+}
+
+.heading-2 {
+  color: $color-black;
+  font-weight: 300;
+  font-size: 4rem;
+  line-height: 1.1;
+  text-transform: uppercase;
+  letter-spacing: -0.5px;
+  @media only screen and (max-width: $bp-small) {
+    font-size: 2.4rem;
+  }
+}
+
+.heading-3 {
+  font-size: 3.2rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  color: $color-white;
+}
+
+.btn:link,
+.btn:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: $color-black;
+  text-transform: uppercase;
+  padding: 0.8rem 2rem;
+  border: 1px solid $color-black;
+  line-height: normal;
+  transition: all 0.4s;
+}
+
+.btn:hover,
+.btn:active {
+  background-color: $color-black;
+  color: $color-white;
+  transform: translateX(-1rem);
+}
